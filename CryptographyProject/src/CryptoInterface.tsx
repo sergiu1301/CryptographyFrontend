@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import {
     Box,
     Typography,
@@ -13,6 +13,7 @@ import {
     Button,
     Alert,
     useTheme,
+    SelectChangeEvent
 } from "@mui/material";
 
 function CryptoInterface() {
@@ -28,15 +29,21 @@ function CryptoInterface() {
     const [error, setError] = useState("");
     const theme = useTheme();
 
-    const handleAlgorithmChange = (e) => setAlgorithm(e.target.value);
-    const handleOperationChange = (e) => setOperation(e.target.value);
-    const handleTextChange = (e) => setText(e.target.value);
-    const handleKeyChange = (e) => setKey(e.target.value);
-    const handleWChange = (e) => setWValue(e.target.value);
-    const handleRChange = (e) => setRValue(e.target.value);
+    const handleAlgorithmChange = (e: SelectChangeEvent) =>
+        setAlgorithm(e.target.value as string);
+    const handleOperationChange = (e: ChangeEvent<HTMLInputElement>) =>
+        setOperation(e.target.value);
+    const handleTextChange = (e: ChangeEvent<HTMLInputElement>) =>
+        setText(e.target.value);
+    const handleKeyChange = (e: ChangeEvent<HTMLInputElement>) =>
+        setKey(e.target.value);
+    const handleWChange = (e: SelectChangeEvent) =>
+        setWValue(e.target.value as string);
+    const handleRChange = (e: ChangeEvent<HTMLInputElement>) =>
+        setRValue(e.target.value);
 
     const validateInputs = () => {
-        const keyLengthInBits = key.length * 8; // Each character is 1 byte = 8 bits
+        const keyLengthInBits = key.length * 8;
         if (keyLengthInBits > 2040) {
             setError("Key length exceeds 2040 bits.");
             return false;
@@ -45,7 +52,9 @@ function CryptoInterface() {
             setError("Invalid word size. Only 16, 32, and 64 are allowed.");
             return false;
         }
-        if (rValue < 0 || rValue > 255) {
+
+        const rValueNum = parseInt(rValue, 10);
+        if (rValueNum < 0 || rValueNum > 255) {
             setError("Invalid number of rounds. Must be between 0 and 255.");
             return false;
         }
@@ -97,7 +106,11 @@ function CryptoInterface() {
             }
         } catch (err) {
             console.error(err);
-            setError(err.message || "An error occurred while communicating with the server.");
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError("An unexpected error occurred.");
+            }
         } finally {
             setLoading(false);
         }
