@@ -78,8 +78,8 @@ function CryptoInterface() {
         try {
             const endpoint =
                 operation === "encrypt"
-                    ? "https://localhost:7258/api/EncryptionDecryption/Encrypt"
-                    : "https://localhost:7258/api/EncryptionDecryption/Decrypt";
+                    ? "https://cryptographybackend.onrender.com/api/EncryptionDecryption/Encrypt"
+                    : "https://cryptographybackend.onrender.com/api/EncryptionDecryption/Decrypt";
 
             const bodyData = {
                 w: parseInt(wValue, 10),
@@ -165,7 +165,7 @@ function CryptoInterface() {
                                 value="encrypt"
                                 control={<Radio />}
                                 label="Encrypt"
-                                componentsProps={{
+                                slotProps={{
                                     typography: { color: "text.secondary" },
                                 }}
                             />
@@ -173,7 +173,7 @@ function CryptoInterface() {
                                 value="decrypt"
                                 control={<Radio />}
                                 label="Decrypt"
-                                componentsProps={{
+                                slotProps={{
                                     typography: { color: "text.secondary" },
                                 }}
                             />
