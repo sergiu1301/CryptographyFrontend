@@ -20,7 +20,6 @@ function CryptoInterface() {
     const [operation, setOperation] = useState("encrypt");
     const [text, setText] = useState("");
     const [key, setKey] = useState("");
-
     const [wValue, setWValue] = useState("32");
     const [rValue, setRValue] = useState("12");
 
