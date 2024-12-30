@@ -16,6 +16,7 @@ import {
     SelectChangeEvent
 } from "@mui/material";
 
+
 function CryptoInterface() {
     const [algorithm, setAlgorithm] = useState("RC5");
     const [operation, setOperation] = useState("encrypt");
@@ -70,6 +71,7 @@ function CryptoInterface() {
 
     const handleProcess = async () => {
         if (!validateInputs()) return;
+        const apiUrl = import.meta.env.VITE_API_URL;
 
         setLoading(true);
         setError("");
@@ -78,8 +80,8 @@ function CryptoInterface() {
         try {
             const endpoint =
                 operation === "encrypt"
-                    ? "https://cryptographybackend.onrender.com/api/EncryptionDecryption/Encrypt"
-                    : "https://cryptographybackend.onrender.com/api/EncryptionDecryption/Decrypt";
+                    ? `${apiUrl}/api/EncryptionDecryption/Encrypt`
+                    : `${apiUrl}/api/EncryptionDecryption/Decrypt`;
 
             const bodyData = {
                 w: parseInt(wValue, 10),
