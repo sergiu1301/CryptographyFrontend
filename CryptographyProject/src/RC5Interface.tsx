@@ -44,6 +44,11 @@ function RC5Interface() {
         return base64Regex.test(str);
     };
 
+    const isHex = (str: string): boolean => {
+        const hexRegex = /^[0-9A-Fa-f]+$/;
+        return hexRegex.test(str);
+    };
+
     const handleTextChange = (e: ChangeEvent<HTMLInputElement>) =>
         setText(e.target.value);
     const handleKeyChange = (e: ChangeEvent<HTMLInputElement>) =>
@@ -119,7 +124,7 @@ function RC5Interface() {
             begin = true;
         }
 
-        if (operation === "decrypt" && isBase64(text)) {
+        if (operation === "decrypt" && isBase64(text) && !isHex(text)) {
             changedText = Buffer.from(text, "base64").toString("hex");
         } else {
             changedText = text;
@@ -128,7 +133,7 @@ function RC5Interface() {
         setLoading(true);
         setError("");
         setResult("");
-        console.log(changedText);
+
         try {
             const endpoint =
                 operation === "encrypt"
@@ -190,7 +195,7 @@ function RC5Interface() {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(result);
-        setCopySuccess("Copied to clipboard!");
+        setCopySuccess("Copied!");
         setTimeout(() => setCopySuccess(""), 2000);
     };
 
@@ -302,6 +307,7 @@ function RC5Interface() {
                         <Typography
                             variant="subtitle1"
                             sx={{
+                                mt: -0.3,
                                 width: "100%",
                                 textAlign: "left",
                             }}
