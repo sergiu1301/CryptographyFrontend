@@ -14,9 +14,11 @@ import {
     SelectChangeEvent,
     TextField,
     Typography,
+    CircularProgress,
     useTheme
 } from "@mui/material";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import {Buffer} from "buffer";
 
 function RC5Interface() {
@@ -285,11 +287,21 @@ function RC5Interface() {
                 sx={{ mb: 2 }}
             />
 
-            <Box sx={{ mb: 2 }}>
+            <Box sx={{ mb: 2, display: "flex", justifyContent: "center"}}>
                 <Button
                     variant="contained"
+                    color="primary"
+                    startIcon={loading ? <CircularProgress size={20} color="inherit" /> : <PlayArrowIcon />}
                     onClick={handleProcess}
                     disabled={loading}
+                    fullWidth
+                    sx={{
+                        width: "150px",
+                        "&:hover": {
+                            transform: "scale(1.05)",
+                            transition: "transform 0.2s ease-in-out",
+                        },
+                    }}
                 >
                     {loading ? "Processing..." : "Start"}
                 </Button>
