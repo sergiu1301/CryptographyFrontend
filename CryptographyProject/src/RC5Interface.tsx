@@ -476,16 +476,12 @@ function RC5Interface() {
 
                 <Box sx={{
                     display: "flex",
-                    flexDirection: {
-                        xs: "column",
-                        sm: "row"
-                    },
                     alignItems: "flex-start",
                     justifyContent: "flex-start",
                     gap: 2,
                     mb: 2,
                     width: "100%" }}>
-                    <FormControl sx={{ width: { xs: "100%", sm: 120 } }}>
+                    <FormControl sx={{ width: 110 }}>
                         <InputLabel id="w-label">w (word size)</InputLabel>
                         <Select
                             labelId="w-label"
@@ -505,7 +501,7 @@ function RC5Interface() {
                         value={rValue}
                         onChange={handleRChange}
                         sx={{
-                            width: { xs: "100%", sm: 120 }
+                            width: 110
                         }}
                         inputProps={{ min: 0, max: 255 }}
                     />
@@ -591,8 +587,8 @@ function RC5Interface() {
                                     wordBreak: "break-all",
                                     width: "100%",
                                     textAlign: "left",
-                                    minHeight: "100px",
-                                    maxHeight: "120px",
+                                    minHeight: "10px",
+                                    maxHeight: "40px",
                                     overflowY: "auto",
                                     overflowX: "hidden"
                                 }}
