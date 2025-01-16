@@ -351,7 +351,6 @@ function RC5Interface() {
                                 setResult("");
                             }}
                         >
-                            {/* Titlu Operație */}
                             <Typography
                                 variant="h6"
                                 fontWeight="bold"
@@ -475,8 +474,18 @@ function RC5Interface() {
                     </RadioGroup>
                 </FormControl>
 
-                <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
-                    <FormControl sx={{ width: 120 }}>
+                <Box sx={{
+                    display: "flex",
+                    flexDirection: {
+                        xs: "column",
+                        sm: "row"
+                    },
+                    alignItems: "flex-start",
+                    justifyContent: "flex-start",
+                    gap: 2,
+                    mb: 2,
+                    width: "100%" }}>
+                    <FormControl sx={{ width: { xs: "100%", sm: 120 } }}>
                         <InputLabel id="w-label">w (word size)</InputLabel>
                         <Select
                             labelId="w-label"
@@ -495,19 +504,33 @@ function RC5Interface() {
                         type="number"
                         value={rValue}
                         onChange={handleRChange}
-                        sx={{ width: 120 }}
+                        sx={{
+                            width: { xs: "100%", sm: 120 }
+                        }}
                         inputProps={{ min: 0, max: 255 }}
                     />
                 </Box>
 
                 <TextField
-                    label={textLabel}
+                    label={
+                        <span
+                            style={{
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                display: 'block',
+                            }}
+                        >
+                            {textLabel}
+                        </span>
+                    }
                     multiline
                     minRows={3}
+                    maxRows={5}
                     value={text}
                     onChange={handleTextChange}
                     fullWidth
-                    sx={{ mb: 2 }}
+                    sx={{mb: 2}}
                 />
 
                 <TextField
@@ -539,13 +562,18 @@ function RC5Interface() {
                 </Box>
 
                 {error && (
-                    <Alert severity="error" sx={{ mb: 2 }}>
+                    <Alert severity="error" sx={{ width: "100%", mb: 2 }}>
                         {error}
                     </Alert>
                 )}
 
                 {!error && result && (
-                    <Alert severity="info" sx={{fontWeight: "bold", fontSize: "1rem", position: "relative"}}>
+                    <Alert severity="info"
+                           sx={{
+                               fontWeight: "bold",
+                               fontSize: "1rem",
+                               position: "relative",
+                               width: "100%"}}>
                         <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
                             <Typography
                                 variant="subtitle1"
@@ -563,6 +591,10 @@ function RC5Interface() {
                                     wordBreak: "break-all",
                                     width: "100%",
                                     textAlign: "left",
+                                    minHeight: "100px",
+                                    maxHeight: "120px",
+                                    overflowY: "auto",
+                                    overflowX: "hidden"
                                 }}
                             >
                             {result}
