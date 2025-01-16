@@ -19,7 +19,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import RC5Interface from "./RC5Interface";
 import RSAInterface from "./RSAInterface";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { getAlgorithmInfo } from "./algorithmInfo.tsx";
+import { getAlgorithmInfo } from "./AlgorithmInfo.tsx";
 
 function CryptoInterface() {
     const [algorithm, setAlgorithm] = useState("RC5");
@@ -71,19 +71,19 @@ function CryptoInterface() {
             </IconButton>
 
             <Typography
-                variant="h5"
+                variant="h4"
                 color="text.secondary"
                 sx={{ mb: 4 }}
                 gutterBottom
             >
-                Encryption/Decryption Interface
+                CryptoSpace
             </Typography>
 
             <Box
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                sx={{ mb: 4, position: "relative" }}
+                sx={{ position: "relative" }}
             >
                 <FormControl fullWidth sx={{ mb: 2 }}>
                     <InputLabel id="algorithm-label">Algorithm</InputLabel>
