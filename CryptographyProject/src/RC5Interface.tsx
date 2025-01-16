@@ -324,7 +324,7 @@ function RC5Interface() {
                     display: "flex",
                     flexDirection: "column",
                 }}>
-                    {history.map((entry, index) => (
+                    {history.length > 0 ? history.map((entry, index) => (
                         <Box
                             key={index}
                             sx={{
@@ -424,7 +424,35 @@ function RC5Interface() {
                                 {new Date(entry.timestamp).toLocaleString()}
                             </Typography>
                         </Box>
-                    ))}
+                    )) : (<Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            height: "100%",
+                            textAlign: "center",
+                            gap: 1,
+                        }}
+                    >
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                color: "text.secondary",
+                                fontWeight: "bold",
+                            }}
+                        >
+                            Nothing to show here
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                color: "text.secondary",
+                            }}
+                        >
+                            Perform an action to populate this section.
+                        </Typography>
+                    </Box>)}
                 </List>
             </Box>
 
@@ -587,8 +615,8 @@ function RC5Interface() {
                                     wordBreak: "break-all",
                                     width: "100%",
                                     textAlign: "left",
-                                    minHeight: "10px",
-                                    maxHeight: "40px",
+                                    minHeight: "30px",
+                                    maxHeight: "53px",
                                     overflowY: "auto",
                                     overflowX: "hidden"
                                 }}
@@ -618,7 +646,7 @@ function RC5Interface() {
                                 </Typography>
                             )}
                             {showFormatSelector && (
-                                <FormControl sx={{ mt: 2 }}>
+                                <FormControl sx={{ mt: 1 }}>
                                     <InputLabel id="format-label">Format</InputLabel>
                                     <Select
                                         labelId="format-label"
