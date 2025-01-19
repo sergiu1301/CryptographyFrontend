@@ -313,7 +313,7 @@ function RC5Interface() {
                         backgroundColor: theme.palette.background.default,
                     }}
                 >
-                    <Typography variant="h6">History</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold' }}>History</Typography>
                     <IconButton onClick={toggleDrawer}>
                         <ChevronLeftIcon />
                     </IconButton>

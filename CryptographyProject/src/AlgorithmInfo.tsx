@@ -1,10 +1,10 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { ReactNode } from "react";
 
 const algorithmDetails: Record<string, ReactNode> = {
     RC5: (
         <>
-            <Typography paragraph>
+            <Box>
                 <strong>Type:</strong> Symmetric-key block cipher. <br />
                 <strong>Inventor:</strong> Ronald Rivest. <br />
                 <strong>Year of invention:</strong> 1994. <br />
@@ -31,12 +31,12 @@ const algorithmDetails: Record<string, ReactNode> = {
                 >
                     RC5 Wikipedia page
                 </a>.
-            </Typography>
+            </Box>
         </>
     ),
     RSA: (
         <>
-            <Typography paragraph>
+            <Box>
                 <strong>Type:</strong> Public-key cryptosystem. <br />
                 <strong>Inventors:</strong> Rivest, Shamir, and Adleman. <br />
                 <strong>Year of invention:</strong> 1977. <br />
@@ -64,7 +64,7 @@ const algorithmDetails: Record<string, ReactNode> = {
                 >
                     RSA Wikipedia page
                 </a>.
-            </Typography>
+            </Box>
         </>
     ),
 };

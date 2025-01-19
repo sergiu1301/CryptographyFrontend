@@ -76,7 +76,7 @@ function CryptoInterface() {
                 sx={{ mb: 4 }}
                 gutterBottom
             >
-                CryptoSpace
+                CryptographySpace
             </Typography>
 
             <Box
